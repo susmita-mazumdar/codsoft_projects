@@ -1,0 +1,85 @@
+FILE  : Task_4.cpp
+TASK 3 : To-Do List
+===============================================================================================================
+
+
+#include <iostream>
+#include <string>
+#include <string.h>
+using namespace std;
+
+void add (string task, string list[30], string stat[30], int num)
+{
+    list[num] = task;
+    stat[num] = "PENDING";
+}
+
+void view(string list[20], string stat[30], int num)
+{
+    cout<<"\nYour To-Do List: \n";
+    for (int i = 0; i < num; i++)
+        cout<<(i + 1)<< ". "<<list[i]<<"    "<<stat[i]<<endl;
+}
+
+void remove(string list[30], string stat[30], int n, int num)
+{
+    for (int i = n - 1; i < num; i++)
+    {
+        list[i] = list[i + 1];
+        stat[i] = stat[i + 1];
+    }
+}
+
+void comp(string stat[30], int k)
+{
+    stat[k - 1] = "COMPLETED";
+}
+
+int main ()
+{
+    string op, task;
+    string list[30], stat[30];
+    int num = 0;
+    while (1)
+    {
+        cout<<"Enter your command\n\n";
+        cin>>op;
+        if (op == "add")
+        {
+            cout<<"\nAdd your task\n\n";
+            cin.ignore();
+            getline(cin, task);
+            add(task, list, stat, num);
+            num++;
+            cout<<endl;
+        }
+        else if (op == "view")
+        {
+            view(list, stat, num);
+            cout<<endl;
+        }
+        else if (op == "remove")
+        {
+            cout<<"\nEnter number of task you want to remove: ";
+            int n;
+            cin>>n;
+            cout<<endl;
+            remove(list, stat, n, num);
+            num--;
+            cout<<"\nTask is removed!\n\n";
+        }
+        else if (op == "complete")
+        {
+            cout<<"\nEnter number of task you completed: ";
+            int k;
+            cin>>k;
+            cout<<endl;
+            comp(stat, k);
+            cout<<"\nYou completed the task!\n\n";
+        }
+        else if (op == "exit")
+            break;
+        else cout<<"\nWrong command please try again!\n\n";
+    }
+    return 0;
+}
