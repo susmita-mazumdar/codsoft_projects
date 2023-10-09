@@ -1,0 +1,40 @@
+FILE  : Task_2.cpp
+TASK 2: Simple Calculator
+========================================================================================================
+
+
+#include <iostream>
+#include <string>
+#include <string.h>
+using namespace std;
+
+int main()
+{
+    int n1, n2;
+    char c;
+    cout<<"Enter first number\n\n";
+    cin>>n1;
+    cout<<"Enter the operation you want to perform\n\n";
+    cin>>c;
+    cout<<"Enter second number\n\n";
+    cin>>n2;
+    switch (c)
+    {
+        case '+':
+            cout<<"The result is    "<<n1 + n2;
+            break;
+        case '-':
+            cout<<"The result is    "<<n1 - n2;
+            break;
+        case '*':
+            cout<<"The result is    "<<n1 * n2;
+            break;
+        case '/':
+            cout<<"The result is    "<<n1 / n2;
+            break;
+        default:
+            cout<<"Wrong operation\n";
+    }
+    cout<<endl;
+    return 0;
+}
